@@ -17,3 +17,7 @@ jar.manifest.attributes = [
 tasks.withType(JavaCompile) {
     source project(':common').sourceSets.main.allSource
 }
+
+processResources {
+    from project(":common").sourceSets.main.resources
+}
