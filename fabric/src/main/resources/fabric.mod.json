@@ -1,0 +1,21 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+  
+    "name": "Eccentric Tome",
+    "description": "This mod adds a single item: the Eccentric Tome.\n\nThe Tome solves a single problem: managing all of your guide books.\n\nThe Tome allows many (infinite?) books to be combined into a single item, and enables them to be retrieved when needed.",
+    "authors": [ "EccentricVamp" ],
+    "contact": {
+      "homepage": "https://curseforge.com/minecraft/mc-mods/eccentric-tome",
+      "sources": "https://github.com/EccentricVamp/EccentricTome"
+    },
+    "license": "AGPL-3.0",
+  
+    "depends": {
+      "fabricloader": ">=${fabric_loader_version}",
+      "fabric": "*",
+      "minecraft": "~${minecraft_version}",
+      "java": ">=${java_version}"
+    }
+  }
