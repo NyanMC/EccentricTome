@@ -5,8 +5,6 @@ plugins {
     id 'eccentric-tome.mod-conventions'
 }
 
-sourceSets.main.resources.srcDirs += 'src/generated/resources'
-
 // def mixinProperties = [
 //     'mixin.env.remapRefMap'        : 'true',
 //     'mixin.env.refMapRemappingFile': file('build/createSrgToMcp/output.srg')
