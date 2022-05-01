@@ -89,10 +89,6 @@ dependencies {
     // runtimeOnly fg.deobf('curse.maven:apotheosis-313970:3717791')
 }
 
-tasks.withType(JavaCompile) {
-    source project(':common').sourceSets.main.allSource
-}
-
 jar.finalizedBy 'reobfJar'
 
 curseforge {

@@ -11,7 +11,12 @@
       "sources": "https://github.com/EccentricVamp/EccentricTome"
     },
     "license": "AGPL-3.0",
-  
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "website.eccentric.tome.EccentricTomeFabric"
+      ]
+    },
     "depends": {
       "fabricloader": ">=${fabric_loader_version}",
       "fabric": "*",
