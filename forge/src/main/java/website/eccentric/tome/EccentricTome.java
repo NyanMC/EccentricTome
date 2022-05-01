@@ -18,7 +18,6 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -53,7 +52,6 @@ public class EccentricTome {
 
         modEvent.addListener(this::onClientSetup);
         modEvent.addListener(this::onCommonSetup);
-        modEvent.addListener(this::onGatherData);
         modEvent.addListener(this::onModConfig);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfiguration.SPEC);
@@ -70,11 +68,6 @@ public class EccentricTome {
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {
         CHANNEL = TomeChannel.register();
-    }
-
-    private void onGatherData(GatherDataEvent event) {
-        var generator = event.getGenerator();
-        generator.addProvider(new TomeRecipe(generator));
     }
 
     private void onModConfig(ModConfigEvent event) {
