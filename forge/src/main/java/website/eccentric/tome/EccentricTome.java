@@ -22,7 +22,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import website.eccentric.tome.client.gui.RenderGameOverlayHandler;
+import website.eccentric.tome.client.gui.ForgeRenderGameOverlayHandler;
 import website.eccentric.tome.client.gui.TomeHandler;
 import website.eccentric.tome.network.RevertMessage;
 import website.eccentric.tome.network.TomeChannel;
@@ -62,7 +62,7 @@ public class EccentricTome {
     }
 
     private void onClientSetup(final FMLClientSetupEvent event) {
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, RenderGameOverlayHandler::onRender);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, ForgeRenderGameOverlayHandler::onRender);
         MinecraftForge.EVENT_BUS.addListener(TomeHandler::onOpenTome);
     }
 
