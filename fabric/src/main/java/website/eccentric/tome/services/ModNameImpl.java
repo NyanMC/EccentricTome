@@ -3,10 +3,11 @@ package website.eccentric.tome.services;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fml.ModList;
 
 public class ModNameImpl implements ModName {
     
@@ -14,13 +15,14 @@ public class ModNameImpl implements ModName {
 
     public ModNameImpl() {
         modNames = new HashMap<>();
-        for (var mod : ModList.get().getMods()) {
-            modNames.put(mod.getModId(), mod.getDisplayName());
+        for (var mod : FabricLoader.getInstance().getAllMods()) {
+            var metadata = mod.getMetadata();
+            modNames.put(metadata.getId(), metadata.getName());
         }
     }
 
     public String from(BlockState state) {
-        return orAlias(state.getBlock().getRegistryName().getNamespace());
+        return orAlias(Registry.BLOCK.getKey(state.getBlock()).getNamespace());
     }
 
     public String from(ItemStack stack) {
@@ -30,7 +32,7 @@ public class ModNameImpl implements ModName {
 
         if (stack.isEmpty()) return minecraft;
 
-        var mod = stack.getItem().getCreatorModId(stack);
+        var mod = Registry.ITEM.getKey(stack.getItem()).getNamespace();
         if (mod.equals(patchouli)) {
             var book = stack.getTag().getString(patchouliBook);
             mod = new ResourceLocation(book).getNamespace();

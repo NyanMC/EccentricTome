@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -12,13 +13,12 @@ import website.eccentric.tome.EccentricTome;
 import website.eccentric.tome.Tag;
 
 public class TomeImpl implements Tome {
-
     public ItemStack convert(ItemStack tome, ItemStack book) {
         var modsBooks = Tag.getModsBooks(tome);
         var mod = Services.load(ModName.class).from(book);
         var books = modsBooks.get(mod);
-        var registry = book.getItem().getRegistryName();
-        books = books.stream().filter(b -> !b.getItem().getRegistryName().equals(registry)).collect(Collectors.toList());
+        var location = Registry.ITEM.getKey(book.getItem());
+        books = books.stream().filter(b -> !Registry.ITEM.getKey(b.getItem()).equals(location)).collect(Collectors.toList());
         modsBooks.put(mod, books);
         Tag.setModsBooks(tome, modsBooks);
 
@@ -54,7 +54,7 @@ public class TomeImpl implements Tome {
     }
 
     private ItemStack createStack() {
-        return Tag.initialize(new ItemStack(EccentricTome.TOME.get()));
+        return Tag.initialize(new ItemStack(EccentricTome.TOME));
     }
 
     private void setHoverName(ItemStack book, String name) {
