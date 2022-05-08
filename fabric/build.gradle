@@ -11,6 +11,23 @@ dependencies {
     implementation project(':common')
 }
 
+loom {
+    runs {
+        client {
+            client()
+            setConfigName 'Fabric Client'
+            ideConfigGenerated true
+            runDir 'run'
+        }
+        server {
+            server()
+            setConfigName 'Fabric Server'
+            ideConfigGenerated true
+            runDir 'run'
+        }
+    }
+}
+
 processResources {
     filesMatching('fabric.mod.json') {
         expand project.properties
