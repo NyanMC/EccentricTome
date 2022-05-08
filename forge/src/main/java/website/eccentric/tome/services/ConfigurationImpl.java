@@ -2,6 +2,7 @@ package website.eccentric.tome.services;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import website.eccentric.tome.CommonConfiguration;
 
@@ -11,7 +12,7 @@ public class ConfigurationImpl implements Configuration {
     private static boolean disableOverlay;
     private static List<? extends String> items;
     private static List<? extends String> names;
-    private static HashMap<String, String> aliases;
+    private static Map<String, String> aliases;
     private static List<? extends String> exclude;
     private static List<? extends String> excludeItems;
         
@@ -31,7 +32,7 @@ public class ConfigurationImpl implements Configuration {
         return names;
     }
 
-    public HashMap<String, String> aliases() {
+    public Map<String, String> aliases() {
         return aliases;
     }
 
