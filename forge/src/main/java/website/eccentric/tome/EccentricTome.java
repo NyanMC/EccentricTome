@@ -30,16 +30,15 @@ import website.eccentric.tome.services.Configuration;
 import website.eccentric.tome.services.Services;
 import website.eccentric.tome.services.Tome;
 
-@Mod(EccentricTome.MODID)
+@Mod(Resource.NAMESPACE)
 public class EccentricTome {
     
-    public static final String MODID = "eccentrictome";
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
+    public static final Logger LOGGER = LogManager.getLogger(Resource.NAMESPACE);
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static final DeferredRegister<RecipeSerializer<?>> RECIPES = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Resource.NAMESPACE);
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPES = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Resource.NAMESPACE);
 
-    public static final RegistryObject<RecipeSerializer<?>> ATTACHMENT = RECIPES.register("attachment", () -> new SimpleRecipeSerializer<>(AttachmentRecipe::new));
+    public static final RegistryObject<RecipeSerializer<?>> ATTACHMENT = RECIPES.register("attachment", EccentricTome::registerSerializer);
     public static final RegistryObject<Item> TOME = ITEMS.register("tome", TomeItem::new);
 
     public static SimpleChannel CHANNEL;
@@ -97,5 +96,10 @@ public class EccentricTome {
 
             entity.setItem(stack);
         }
+    }
+
+    private static RecipeSerializer<?> registerSerializer() {
+        AttachmentRecipe.SERIALIZER = new SimpleRecipeSerializer<>(AttachmentRecipe::new);
+        return AttachmentRecipe.SERIALIZER;
     }
 }
