@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import website.eccentric.tome.client.gui.RenderGameOverlayHandler;
 
 public class EccentricTomeClient implements ClientModInitializer {
-    public static final Logger LOG = LoggerFactory.getLogger(EccentricTome.ID);
+    public static final Logger LOG = LoggerFactory.getLogger(Resource.NAMESPACE);
 
     @Override
     public void onInitializeClient() {

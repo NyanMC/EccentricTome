@@ -7,13 +7,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
-import website.eccentric.tome.EccentricTome;
+import website.eccentric.tome.Resource;
 import website.eccentric.tome.TomeItem;
 import website.eccentric.tome.services.Services;
 import website.eccentric.tome.services.Tome;
 
 public class ConvertHandler implements PlayChannelHandler {
-    public static final ResourceLocation LOCATION = new ResourceLocation(EccentricTome.ID, "convert");
+    public static final ResourceLocation LOCATION = Resource.location("convert");
     
     @Override
     public void receive(
