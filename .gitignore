@@ -7,3 +7,7 @@ run
 # IDEs
 .vscode
 .idea
+
+# Fabric
+logs
+.fabric
