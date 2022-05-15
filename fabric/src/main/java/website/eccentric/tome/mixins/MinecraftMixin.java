@@ -24,7 +24,7 @@ public abstract class MinecraftMixin extends ReentrantBlockableEventLoop<Runnabl
         super(string);
     }
 
-    @Inject(method = "startAttack", at = @At(value = "INVOKE", target = "resetAttackStrengthTicker"))
+    @Inject(method = "startAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;resetAttackStrengthTicker()V"))
     public void onMiss(CallbackInfoReturnable<Boolean> cir) {
         var stack = this.player.getMainHandItem();
         if (TomeItem.isTome(stack) && !(stack.getItem() instanceof TomeItem)) {
