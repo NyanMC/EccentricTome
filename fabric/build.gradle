@@ -27,9 +27,3 @@ loom {
         }
     }
 }
-
-processResources {
-    filesMatching('fabric.mod.json') {
-        expand project.properties
-    }
-}

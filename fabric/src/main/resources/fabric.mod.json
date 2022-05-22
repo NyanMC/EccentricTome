@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "eccentrictome",
-  "version": "${mod_version}",
+  "version": "1.5.0",
 
   "name": "Eccentric Tome",
   "description": "This mod adds a single item: the Eccentric Tome.\n\nThe Tome solves a single problem: managing all of your guide books.\n\nThe Tome allows many (infinite?) books to be combined into a single item, and enables them to be retrieved when needed.",
