@@ -10,22 +10,17 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.util.thread.ReentrantBlockableEventLoop;
 import website.eccentric.tome.TomeItem;
 import website.eccentric.tome.network.RevertHandler;
 
 @Mixin(Minecraft.class)
-public abstract class MinecraftMixin extends ReentrantBlockableEventLoop<Runnable> {
+public class MinecraftMixin {
 
     @Shadow
     public LocalPlayer player;
 
-    public MinecraftMixin(String string) {
-        super(string);
-    }
-
-    @Inject(method = "startAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;resetAttackStrengthTicker()V"))
-    public void onMiss(CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "startAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;resetAttackStrengthTicker()V"))
+    public void onMiss(CallbackInfoReturnable<Boolean> info) {
         var stack = this.player.getMainHandItem();
         if (TomeItem.isTome(stack) && !(stack.getItem() instanceof TomeItem)) {
             ClientPlayNetworking.send(RevertHandler.LOCATION, PacketByteBufs.empty());
