@@ -15,28 +15,6 @@ public class EccentricTomeClient implements ClientModInitializer {
         HudRenderCallback.EVENT.register(RenderGameOverlayHandler::onRender);
         /*
         MinecraftForge.EVENT_BUS.addListener(TomeHandler::onOpenTome);
-        minecraftEvent.addListener(EventPriority.LOW, this::onItemDropped);
         */
     }
-
-    /*
-
-    private void onItemDropped(ItemTossEvent event) {
-        if (!event.getPlayer().isShiftKeyDown()) return;
-
-        var entity = event.getEntityItem();
-        var stack = entity.getItem();
-
-        if (TomeItem.isTome(stack) && !(stack.getItem() instanceof TomeItem)) {
-            var detatchment = Services.load(Tome.class).revert(stack);
-            var level = entity.getCommandSenderWorld();
-
-            if (!level.isClientSide) {
-                level.addFreshEntity(new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(), detatchment));
-            }
-
-            entity.setItem(stack);
-        }
-    }
-    */
 }
